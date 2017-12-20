@@ -1,3 +1,5 @@
+# Exercise 1 : Celsius to Fahrenheit
+
 class DailyTemperature
   attr_reader :celsius, :fahrenheit
 
@@ -46,4 +48,4 @@ weekly_reading = WeeklyTemperature.new(16, 17, 18, 18, 21, 16, 19)
 weekly_reading.print_temperatures
 
 # to wrap this up, I would create a script to prompt for User to input celsius from
-# monday to friday and then feed this to line 45's parameters
+# monday to sunday and then feed this to line 45's parameters
