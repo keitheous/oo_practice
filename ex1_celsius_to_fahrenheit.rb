@@ -27,17 +27,23 @@ class WeeklyTemperature
 
   def print_temperatures
     self.weekly_reading.each do |day, temperature|
-      puts '===='
-      # puts day.upcase
-      # puts temperature.celsius
-      puts [day.upcase, temperature.celsius, temperature.fahrenheit].join(' | ')
+      puts [
+        day.upcase,
+        temperature_string(temperature.celsius, 'C'),
+        temperature_string(temperature.fahrenheit, 'F')
+      ].join(' | ')
     end
+  end
+
+  private
+
+  def temperature_string(temperature, unit)
+    "#{temperature} degrees #{unit}"
   end
 end
 
-# monday = DailyTemperature.new('monday', 6)
-# class for the entire 7 days of a week
-# 16, 17, 18, 18, 21, 16, 19
+weekly_reading = WeeklyTemperature.new(16, 17, 18, 18, 21, 16, 19)
+weekly_reading.print_temperatures
 
-# weekly_reading = WeeklyTemperature.new(16, 17, 18, 18, 21, 16, 19)
-# weekly_reading.print_temperatures
+# to wrap this up, I would create a script to prompt for User to input celsius from
+# monday to friday and then feed this to line 45's parameters
