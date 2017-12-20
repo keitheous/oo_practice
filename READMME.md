@@ -6,7 +6,8 @@ personal practice exercise while on vacation from [codebar](http://tutorials.cod
 Celsius class that takes temperature as parameter which is then converted into Fabrenheit.
 
 * Use an initialize method to create
-* Use the round method
+* Use conversion formula **frahrenheit = celsius * 1.8 + 32**
+* Use the **round** method
 
 Sample Input/Output :
 ```
@@ -19,4 +20,4 @@ Sat | 16 degrees C  | 61 degrees F
 Sun | 19 degrees C  | 66 degrees F
 ```
 
-_instead of prompting for user to enter these values, I will be using ARGV instead._
+_instead of prompting (gets.chomp) for user to enter these values, I will be using ARGV._
