@@ -23,6 +23,7 @@ Sun | 19 degrees C  | 66 degrees F
 _instead of prompting (gets.chomp) for user to enter these values, I will be using ARGV._
 
 
+
 ### Exercise 2 : Tutorial difficulty level
 
 Create object with the following information:
@@ -39,9 +40,13 @@ The difficulty of each tutorial MUST be defined as symbols and the ranging value
 
 Other important instructions:
 ```
-In the Tutorial class create a method called is_harder_than? that takes in another tutorial as a parameter and returns true if parent tutorial’s difficulty level is higher than the tutorial passed in a parameter and false if the difficulty level is lower. This only happens if the tutorial types are the same.
+In the Tutorial class create a method called is_harder_than? that takes in
+another tutorial as a parameter and returns true if parent tutorial’s difficulty
+level is higher than the tutorial passed in a parameter and false if the
+difficulty level is lower. This only happens if the tutorial types are the same.
 
-Alternatively, it outputs You cannot compare a Ruby with a JavaScript tutorial where Ruby and JavaScript are the types of the given tutorials.
+Alternatively, it outputs You cannot compare a Ruby with a JavaScript tutorial
+where Ruby and JavaScript are the types of the given tutorials.
 ```
 
 The output should look like this:
