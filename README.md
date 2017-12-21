@@ -68,3 +68,13 @@ tutorial3.is_harder_than?(tutorial2)
 ```
 
 ### Exercise 3 : Inheritance - a Superhero person
+
+This is a code along exercise rather than one I would have to figure out on my own.
+
+Inheritance is a way for classes to inherit or get features from another parent
+class. Just like how you would inherit some D.N.A genes from your parents, a child
+class can inherit functions or features from a parent class.
+
+This makes creating a program much easier when functionality needs to be shared between
+objects. In the example that we are about to do in _ex3_inheritance_superhero_person_,
+which contains a Person and a SuperHero class, Not everyone is a Super Hero, but all Super Heros are People(a person).
