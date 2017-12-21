@@ -11,7 +11,7 @@ class Student < Person
   end
 
   def to_s
-    "#{@full_name} - #{@about}"
+    p "#{@full_name} - #{@about}"
   end
 end
 
@@ -27,7 +27,8 @@ class Coach < Person
   end
 
   def to_s
-    ["#{@full_name} - #{@skills.join(',')}", "\t #{@bio}"].join("\n")
+    p "#{@full_name} - #{@skills.join(',')}"
+    p "\t#{@bio}"
   end
 end
 
@@ -50,13 +51,17 @@ class Workshop
   end
 
   def print_details
-    p [
-      "Workshop - #{@date} - Venue: #{@venue_name}",
-      "Students",
-      students_list(@students),
-      "Coaches",
-      coaches_list(@coaches)
-    ].join("\n")
+    p '#'
+    p "Workshop - #{@date} - Venue: #{@venue_name}"
+    p '#'
+    p "Students"
+    students_list(@students) unless @students.empty?
+    p '#'
+    p "Coaches"
+    coaches_list(@coaches) unless @coaches.empty?
+    p '#'
+
+    nil
   end
 
   private
@@ -64,17 +69,22 @@ class Workshop
   def students_list(students)
     students.each_with_index do |student, index|
       "#{index+1}. #{student.to_s}"
-    end.join('\n')
+    end
   end
 
   def coaches_list(coaches)
     coaches.each_with_index do |coach, index|
       "#{index+1}. #{coach.to_s}"
-    end.join('\n')
+    end
   end
 end
 
 
+
+
+
+
+# instructions
 workshop = Workshop.new("12/03/2014", "Shutl")
 
 jane = Student.new("Jane Doe", "I am trying to learn programming and need some help")
@@ -90,3 +100,21 @@ workshop.add_participant(lena)
 workshop.add_participant(vicky)
 workshop.add_participant(nicole)
 workshop.print_details
+
+=begin
+obtained results
+
+"#"
+"Workshop - 12/03/2014 - Venue: Shutl"
+"#"
+"Students"
+"Jane Doe - I am trying to learn programming and need some help"
+"Lena Smith - I am really excited about learning to program!"
+"#"
+"Coaches"
+"Vicky Ruby - HTML,JavaScript"
+"\tI want to help people learn coding."
+"Nicole McMillan - Ruby"
+"\tI have been programming for 5 years in Ruby and want to spread the love"
+"#"
+=end
