@@ -78,3 +78,6 @@ class can inherit functions or features from a parent class.
 This makes creating a program much easier when functionality needs to be shared between
 objects. In the example that we are about to do in _ex3_inheritance_superhero_person_,
 which contains a Person and a SuperHero class, Not everyone is a Super Hero, but all Super Heros are People(a person).
+
+*Overriding methods*
+You can override methods by redefiniting the same method in the subclass. This is done in SuperHero class as method to_s.

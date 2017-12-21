@@ -9,13 +9,17 @@ class Person
   end
 end
 
-# SuperHero < Person means that Person is the the base class and SuperHero is the subclass
-class SuperHero < Person
+class SuperHero < Person # BaseClass < SubClass
   def initialize(name, age, superpower)
     super(name, age)
     @superpower = superpower
   end
+
+  def to_s
+    "#{@name} is #{@age} years old, with super hero power #{@superpower}."
+  end
 end
+
 
 # in irb
 # emily = Person.new("Emily", 28)
@@ -30,3 +34,8 @@ end
 #  => false
 # jean_grey.is_a?(SuperHero)
 #  => true
+
+# emily.to_s
+#  => "Emily is 28 years old."
+# jean_grey.to_s
+#  => "Jean Grey is 51 years old, with super hero power Telekinesis."
