@@ -81,3 +81,50 @@ which contains a Person and a SuperHero class, Not everyone is a Super Hero, but
 
 *Overriding methods*
 You can override methods by redefiniting the same method in the subclass. This is done in SuperHero class as method to_s.
+
+
+### Exercise 4 : Codebar Workshops and Members
+
+Members
+* Two different types of members: Students and Coaches. Both members have full_name attributes.
+* Students have a unique *about* attribute.
+* Coaches have 2 unique attributes *bio* and *skills*.
+
+Workshops have
+* a date
+* a venue_name
+* coaches, and
+* students
+* an *add_participant* method that accepts a *member* attribute. If the member is Coach, add them to the coach list. Alternatively, if the member is a Student, add them to the students list.
+* a *print_details* method to output the the details of the workshop.
+
+Below is the expected behavior we are expecting:
+```
+workshop = Workshop.new("12/03/2014", "The Basics of Object Oriented Programming")
+
+jane = Student.new("Jane Doe", "I am trying to learn programming and need some help")
+lena = Student.new("Lena Smith", "I am really excited about learning to program!")
+vicky = Coach.new("Vicky Ruby", "I want to help people learn coding.")
+vicky.add_skill("HTML")
+vicky.add_skill("JavaScript")
+nicole = Coach.new("Nicole McMillan", "I have been programming for 5 years in Ruby and want to spread the love")
+nicole.add_skill("Ruby")
+
+workshop.add_participant(jane)
+workshop.add_participant(lena)
+workshop.add_participant(vicky)
+workshop.add_participant(nicole)
+workshop.print_details
+#
+# Workshop - 12/03/2014 - Venue: Shutl
+#
+# Students
+# 1. Jane Doe - I am trying to learn programming and need some help
+# 2. Lena Smith - I am really excited about learning to program!
+#
+# Coaches
+# 1. Vicky Ruby - HTML, JavaScript
+#    I want to help people learn coding.
+# 2. Nicole McMillan - Ruby
+#    I have been programming for 5 years in Ruby and want to spread the love
+```
