@@ -1,5 +1,4 @@
 # Exercise 2 : Tutorial difficulty levels
-require 'pry'
 
 class Tutorial
   LEVELS = [:easy, :medium, :hard, :advanced, :expert]
@@ -30,6 +29,11 @@ class Tutorial
   end
 end
 
+
+
+
+
+# execution script from instructions
 
 tutorial1 = Tutorial.new("Object Oriented Ruby", :ruby, :medium)
 tutorial2 = Tutorial.new("Introduction to JavaScript", :javascript, :easy)

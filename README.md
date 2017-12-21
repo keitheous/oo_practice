@@ -23,7 +23,6 @@ Sun | 19 degrees C  | 66 degrees F
 _instead of prompting (gets.chomp) for user to enter these values, I will be using ARGV._
 
 
-
 ### Exercise 2 : Tutorial difficulty level
 
 Create object with the following information:
@@ -67,3 +66,5 @@ tutorial2.is_harder_than?(tutorial3)
 tutorial3.is_harder_than?(tutorial2)
 # true
 ```
+
+### Exercise 3 : Inheritance - a Superhero person
