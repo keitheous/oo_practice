@@ -11,7 +11,7 @@ class Student < Person
   end
 
   def to_s
-    p "#{@full_name} - #{@about}"
+    "#{@full_name} - #{@about}"
   end
 end
 
@@ -27,8 +27,8 @@ class Coach < Person
   end
 
   def to_s
-    p "#{@full_name} - #{@skills.join(',')}"
-    p "\t#{@bio}"
+    ["#{@full_name} - #{@skills.join(',')}",
+    "#{@bio}"].join('\\n')
   end
 end
 
@@ -64,17 +64,15 @@ class Workshop
     nil
   end
 
-  private
-
   def students_list(students)
     students.each_with_index do |student, index|
-      "#{index+1}. #{student.to_s}"
+      p "#{index+1}. #{student.to_s}"
     end
   end
 
   def coaches_list(coaches)
     coaches.each_with_index do |coach, index|
-      "#{index+1}. #{coach.to_s}"
+      p "#{index+1}. #{coach.to_s}"
     end
   end
 end
