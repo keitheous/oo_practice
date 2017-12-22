@@ -1,27 +1,27 @@
-class Player
-  attr_reader :location
-
-  def initialize(location)
-    @location = location
-  end
-
-  def look_around
-    p "Location: #{self.location[:description]}"
-    self.location[:items].each do |item|
-      p "You see a #{item} on the floor"
-    end
-
-    nil
-  end
-
-  def pick_up(item)
-    current_items = self.location[:items]
-    current_items.delete_at(rand(current_items.length))
-    current_items << item
-
-    "picked up #{item}"
-  end
-end
+# class Player
+#   attr_reader :location
+#
+#   def initialize(location)
+#     @location = location
+#   end
+#
+#   def look_around
+#     p "Location: #{self.location[:description]}"
+#     self.location[:items].each do |item|
+#       p "You see a #{item} on the floor"
+#     end
+#
+#     nil
+#   end
+#
+#   def pick_up(item)
+#     current_items = self.location[:items]
+#     current_items.delete_at(rand(current_items.length))
+#     current_items << item
+#
+#     "picked up #{item}"
+#   end
+# end
 
 # instructions for task 1
 
@@ -35,6 +35,7 @@ end
 # player.pick_up("whiskey")
 # player.look_around
 
+
 class Map
   attr_reader :current_location, :locations
   def initialize(locations)
@@ -43,20 +44,20 @@ class Map
   end
 
   def describe
-    location = locations.detect do |location|
-      location[:name] = self.current_location
-    end
-
-    p location[:description] if location
+    self.current_location[:description]
   end
 
   def move_to(direction)
-    new_location = locations.each do |location|
-      edge = location[:edges].first
-      edge[:location] if edge[:direction] == direction
-    end
+    location_instance_with_edge =
+      locations.detect do |location|
+        location[:edges].first[:direction] == direction
+      end
 
-    @current_location = new_location
+    new_location_name =
+      location_instance_with_edge[:edges].first[:location]
+
+    @current_location =
+      locations.detect{|location| location[:name] == 'attic'}
   end
 end
 
@@ -79,3 +80,8 @@ locations = [{
       location: "living_room"
     }]
 }]
+
+map = Map.new(locations)
+map.describe
+map.move_to("upstairs")
+# map.describe
