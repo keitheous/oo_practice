@@ -43,11 +43,20 @@ class Map
   end
 
   def describe
-    p self.current_location[:description]
+    location = locations.detect do |location|
+      location[:name] = self.current_location
+    end
+
+    p location[:description] if location
   end
 
   def move_to(direction)
-    @locations
+    new_location = locations.each do |location|
+      edge = location[:edges].first
+      edge[:location] if edge[:direction] == direction
+    end
+
+    @current_location = new_location
   end
 end
 
