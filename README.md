@@ -150,3 +150,6 @@ Implement these functions:
 
 * *look_around* prints out the description of the location, all the items of a location (*"You see a #{item} on the floor"*)
 * *pick_up(item)* removes an item from the *location*, and adds it to *Players*’s *items* array
+
+**Task 2 : Moving between locations**
+Create map for player to move between locations.

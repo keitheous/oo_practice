@@ -23,17 +23,50 @@ class Player
   end
 end
 
+# instructions for task 1
 
+# location = {
+#   description: "You are in the living-room. A wizard is snoring loudly on the couch.",
+#   items: ["whiskey", "bucket"]
+# }
+#
+# player = Player.new(location)
+# player.look_around
+# player.pick_up("whiskey")
+# player.look_around
 
+class Map
+  attr_reader :current_location, :locations
+  def initialize(locations)
+    @locations = locations
+    @current_location = locations.first
+  end
 
-# instructions
+  def describe
+    p self.current_location[:description]
+  end
 
-location = {
-  description: "You are in the living-room. A wizard is snoring loudly on the couch.",
-  items: ["whiskey", "bucket"]
-}
+  def move_to(direction)
+    @locations
+  end
+end
 
-player = Player.new(location)
-player.look_around
-player.pick_up("whiskey")
-player.look_around
+locations = [{
+    name: "living_room",
+    description: "You are in the living-room. A wizard is snoring loudly on the couch.",
+    items: ["whiskey", "bucket"],
+    edges: [{
+      direction: "upstairs",
+      item: "ladder",
+      location: "attic"
+    }]
+  },
+  {
+    name: "attic",
+    description: "You are in the attic. There is a giant welding torch in the corner.",
+    edges: [{
+      direction: "downstairs",
+      item: "ladder",
+      location: "living_room"
+    }]
+}]
