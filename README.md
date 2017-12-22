@@ -153,3 +153,6 @@ Implement these functions:
 
 **Task 2 : Moving between locations**
 Create map for player to move between locations.
+
+
+**Task 3 : Integrating Map and Player**

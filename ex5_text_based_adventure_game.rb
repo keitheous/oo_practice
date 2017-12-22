@@ -1,8 +1,10 @@
 class Player
-  attr_reader :location
+  attr_reader :location, :map
 
-  def initialize(location)
-    @location = location
+  def initialize(input_location = nil)
+    @map = Map.new(Map::DEFAULT_LOCATIONS)
+
+    @location = map.current_location
   end
 
   def look_around
@@ -21,30 +23,48 @@ class Player
 
     "picked up #{item}"
   end
+
+  # def walk()
+  # end
 end
-
-# instructions for task 1
-
-# location = {
-#   description: "You are in the living-room. A wizard is snoring loudly on the couch.",
-#   items: ["whiskey", "bucket"]
-# }
-#
-# player = Player.new(location)
-# player.look_around
-# player.pick_up("whiskey")
-# player.look_around
 
 
 class Map
   attr_reader :current_location, :locations
-  def initialize(locations)
-    @locations = locations
+  DEFAULT_LOCATIONS =[{
+    name: "living_room",
+    description: "You are in the living-room. A wizard is snoring loudly on the couch.",
+    items: ["whiskey", "bucket"],
+    edges: [{
+      direction: "upstairs",
+        item: "ladder",
+        location: "attic"
+    }]
+  },
+  {
+    name: "attic",
+    description: "You are in the attic. There is a giant welding torch in the corner.",
+    edges: [{
+      direction: "downstairs",
+      item: "ladder",
+      location: "living_room"
+    }]
+  }]
+
+  def initialize(input_locations)
+    @locations = input_locations
     @current_location = locations.first
   end
 
   def describe
+    p "Description for current location:"
     p self.current_location[:description]
+
+    p '======================================'
+    all_paths = locations.collect{|location| location[:name]}
+    all_paths.delete(current_location[:name])
+    p "Available Paths : #{all_paths.join(', ')}"
+    p '======================================'
   end
 
   def move_to(direction)
@@ -57,33 +77,16 @@ class Map
       location_instance_with_direction[:edges].first[:location]
 
     @current_location =
-      locations.detect{|location| location[:name] == 'attic'}
+      locations.detect do |location|
+        location[:name] == new_location_name
+      end
+
+    self.describe
   end
 end
 
-# locations = [{
-#     name: "living_room",
-#     description: "You are in the living-room. A wizard is snoring loudly on the couch.",
-#     items: ["whiskey", "bucket"],
-#     edges: [{
-#       direction: "upstairs",
-#       item: "ladder",
-#       location: "attic"
-#     }]
-#   },
-#   {
-#     name: "attic",
-#     description: "You are in the attic. There is a giant welding torch in the corner.",
-#     edges: [{
-#       direction: "downstairs",
-#       item: "ladder",
-#       location: "living_room"
-#     }]
-# }]
-
-# instructions for task 2
-# map = Map.new(locations)
-# map.describe
-# p 'moving upstairs'
-# map.move_to("upstairs")
-# map.describe
+map = Map.new(Map::DEFAULT_LOCATIONS)
+p 'moving upstairs'
+map.move_to("upstairs")
+p 'moving dowstairs'
+map.move_to("downstairs")
