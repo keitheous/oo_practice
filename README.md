@@ -136,3 +136,17 @@ workshop.print_details
 Create a *1) Player*, *2) Location*, & *3) Map class*.
 
 1) Player - should have an arrays of items and location. Start with initialize.
+
+**Task 1 : Viewing location and picking up items**
+Sample Hash for location :
+```
+location = {
+  description: "You are in the living-room. A wizard is snoring loudly on the couch.",
+  items: ["whiskey", "bucket"]
+}
+```
+
+Implement these functions:
+
+* *look_around* prints out the description of the location, all the items of a location (*"You see a #{item} on the floor"*)
+* *pick_up(item)* removes an item from the *location*, and adds it to *Players*’s *items* array
