@@ -129,3 +129,10 @@ workshop.print_details
 # 2. Nicole McMillan - Ruby
 #    I have been programming for 5 years in Ruby and want to spread the love
 ```
+
+
+### Exercise 5 : Text based adventure game!
+
+Create a *1) Player*, *2) Location*, & *3) Map class*.
+
+1) Player - should have an arrays of items and location. Start with initialize.
