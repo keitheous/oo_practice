@@ -100,7 +100,7 @@ workshop.add_participant(nicole)
 workshop.print_details
 
 =begin
-obtained results
+obtained results:
 
 "#"
 "Workshop - 12/03/2014 - Venue: Shutl"

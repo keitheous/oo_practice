@@ -97,6 +97,7 @@ Workshops have
 * students
 * an *add_participant* method that accepts a *member* attribute. If the member is Coach, add them to the coach list. Alternatively, if the member is a Student, add them to the students list.
 * a *print_details* method to output the the details of the workshop.
+* Create a method to print the workshop details, a method to print out the students and one to print out the coaches. Call these from print_details. Make sure that these methods cannot be invoked from outside the class.
 
 Below is the expected behavior we are expecting:
 ```
