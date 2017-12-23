@@ -227,3 +227,6 @@ data = File.read('./supplimentary_resources/adventure.yml')
 adventure_map = YAML.load(data)
 player = Player.new(adventure_map)
 ```
+
+**Exception Handling and Homework**
+I will work on this at a later time.
