@@ -149,10 +149,81 @@ location = {
 Implement these functions:
 
 * *look_around* prints out the description of the location, all the items of a location (*"You see a #{item} on the floor"*)
-* *pick_up(item)* removes an item from the *location*, and adds it to *Players*’s *items* array
+* *pick_up(item)* removes an item from the *location*, and adds it to *Players*’s *items* array (in this case living_room).
+
+Test scripts that should work up to this point:
+```
+player = Player.new(location)
+player.look_around
+player.pick_up("whiskey")
+player.look_around
+```
 
 **Task 2 : Moving between locations**
-Create map for player to move between locations.
+* Create map for player to move between *locations* that initialize with a list of locations sampled below and assigns the *current_location* to the first on the list.
 
+sample locations:
+```
+locations = [{
+  name: "living_room",
+  description: "You are in the living-room. A wizard is snoring loudly on the couch.",
+  items: ["whiskey", "bucket"],
+  edges: [{
+    direction: "upstairs",
+    item: "ladder",
+    location: "attic"
+  }]
+},
+{
+  name: "attic",
+  description: "You are in the attic. There is a giant welding torch in the corner.",
+  edges: [{
+    direction: "downstairs",
+    item: "ladder",
+    location: "living_room"
+  }]
+}]
+```
+
+* Implement a *move_to* that receives *direction* param that we want to move to.
+ It must find the location connected to the current location with that path. To do that, we need to iterate over the *locations* and then the *edges* of each location, and _return the edge’s location_ if its direction matches the direction we are trying to go towards.
+
+ For instance, referring to the hash above, if your "current_location" is "attic", "move_to" "downstairs" would return "living_room".
+
+* Implement a *describe* method to print out the *description* of the *current_location*. In addition to that, print out the location's available paths.
+`puts "There is a #{path[:item]} going #{path[:direction]} from here."`
+
+
+Test scripts that should work up to this point:
+```
+map = Map.new(Map::DEFAULT_LOCATIONS)
+p 'moving upstairs'
+map.move_to("upstairs")
+p 'moving dowstairs'
+map.move_to("downstairs")
+```
 
 **Task 3 : Integrating Map and Player**
+* Change *Player* to accept the instance of *Map* when it is initialized (@map).
+
+* *Player* class creates a *location* method that points to *@map.current_location* and a *walk* method that calls for *Map*'s *move_to(direction)*
+
+Test scripts that *would* work up to this point:
+```
+player = Player.new
+player.map.locations
+    => [{:name=>"living_room", :description=>"You are in the living-room. A wizard is snoring loudly on the couch.", :items=>["whiskey", "bucket"], :edges=>[{:direction=>"upstairs", :item=>"ladder", :location=>"attic"}]}, {:name=>"attic", :description=>"You are in the attic. There is a giant welding torch in the corner.", :edges=>[{:direction=>"downstairs", :item=>"ladder", :location=>"living_room"}]}]
+player.map.current_location
+    => {:name=>"living_room", :description=>"You are in the living-room. A wizard is snoring loudly on the couch.", :items=>["whiskey", "bucket"], :edges=>[{:direction=>"upstairs", :item=>"ladder", :location=>"attic"}]}
+```
+
+
+**Task 4 - Loading data**
+by requiring [yaml](http://ruby-doc.org/stdlib-2.1.0/libdoc/yaml/rdoc/YAML.html), load this [file](https://gist.github.com/despo/c3ea3f753c0630fea000) and run it on the classes. This has been added to the supplimentary_resources folder.
+
+Test scripts that *would* work up to this point:
+```
+data = File.read('./supplimentary_resources/adventure.yml')
+adventure_map = YAML.load(data)
+player = Player.new(adventure_map)
+```

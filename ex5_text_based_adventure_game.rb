@@ -1,14 +1,21 @@
+require 'yaml'
+
 class Player
   attr_reader :location, :map
 
-  def initialize(input_location = nil)
-    @map = Map.new(Map::DEFAULT_LOCATIONS)
+  def initialize(input_locations = nil)
+    @map = input_locations.nil? ? Map.new(Map::DEFAULT_LOCATIONS) : input_locations
 
-    @location = map.current_location
+    location
+  end
+
+  def location
+    @location = self.map.current_location
   end
 
   def look_around
     p "Location: #{self.location[:description]}"
+
     self.location[:items].each do |item|
       p "You see a #{item} on the floor"
     end
@@ -24,10 +31,10 @@ class Player
     "picked up #{item}"
   end
 
-  # def walk()
-  # end
+  def walk(direction)
+    map.move_to(direction)
+  end
 end
-
 
 class Map
   attr_reader :current_location, :locations
@@ -85,8 +92,9 @@ class Map
   end
 end
 
-map = Map.new(Map::DEFAULT_LOCATIONS)
-p 'moving upstairs'
-map.move_to("upstairs")
-p 'moving dowstairs'
-map.move_to("downstairs")
+data = File.read('./supplimentary_resources/adventure.yml')
+adventure_map = YAML.load(data)
+# p adventure_map
+# player = Player.new()
+# player.map.locations
+# player.map.current_location

@@ -1,0 +1,28 @@
+- :name: "living_room"
+  :description: "You are in the living-room. A wizard is snoring loudly on the couch."
+  :edges:
+    - :direction: "upstairs"
+      :item: "ladder"
+      :location: "attic"
+    - :direction: "west"
+      :item: "door"
+      :location: "garden"
+  :items:
+    - whiskey
+    - bucket
+
+- :name : "attic"                                                                                                                                                                                             :description: "You are in the attic. There is a giant welding torch in the corner."
+  :edges:
+    - :direction: "downstairs"
+      :item: "ladder"
+      :location: "living_room"
+
+- :name: "garden"
+  :description: "You are in a beautiful garden. There is a well in front of you."
+  :edges:
+    - :direction: "east"
+      :item: "door"
+      :location: "living_room"
+  :items:
+    - chain
+    - frog
